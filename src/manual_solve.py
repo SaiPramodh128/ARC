@@ -1,5 +1,9 @@
 #!/usr/bin/python
-
+"""
+Student name: Sai Pramodh Sabarissan
+Student ID: 21230987
+Github URL: https://github.com/SaiPramodh128/ARC
+"""
 import os, sys
 import json
 import numpy as np
@@ -13,8 +17,43 @@ import re
 # def solve_6a1e5592(x):
 #     return x
 #
-# def solve_b2862040(x):
-#     return x
+def solve_1b60fb0c(x):
+    output = np.copy(x)
+    unique_elem_list, no_of_times = np.unique(x, return_counts=True)
+    map_color_count = zip(unique_elem_list, no_of_times)
+    sorted_color_count = sorted(map_color_count, key=lambda y: y[1])
+    unique_color = 0
+    for i in sorted_color_count:
+        if i[0] != 0:
+            unique_color = i[0]
+
+    m, n = output.shape
+    b = m - 1
+    t = 0
+    r = n - 1
+    l = 0
+    color_to_be_filled = 2
+
+    while t < m / 2:
+        if unique_color in output[b][:]:
+            if unique_color in output[t][:]:
+
+                previous_shape = output[t:b, l]
+                if (output[b, l:r] == output[t, l:r]).all():
+                    new_shape = output[t:b, r]
+                else:
+                    new_shape = np.roll(output[t:b, r], axis=0, shift=1)
+
+                output[t:b, l] = np.where(previous_shape == new_shape, previous_shape, color_to_be_filled)
+            else:
+                t = t + 1
+                l = l + 1
+                continue
+        b = b - 1
+        t = t + 1
+        l = l + 1
+        r = r - 1
+    return output
 
 def solve_9af7a82c(x):
     unique_elem_list,no_of_times=np.unique(x, return_counts=True)
@@ -28,6 +67,29 @@ def solve_9af7a82c(x):
         n += 1
     return output
 
+def solve_3bd67248(x):
+
+    unique_elem_list, no_of_times = np.unique(x, return_counts=True)
+    output = np.copy(x)
+
+    map_color_count = zip(unique_elem_list, no_of_times)
+    sorted_color_count = sorted(map_color_count, key=lambda y: y[1])
+    unique_color = 0
+    for i in sorted_color_count:
+        if i[0] != 0:
+            unique_color = i[0]
+
+    left_line_color = unique_color
+
+    bottom_line_color=4
+    diagonal_line_color=2
+    output[-1,1:] = bottom_line_color
+
+    np.fill_diagonal(np.flipud(output), diagonal_line_color)
+
+    output[-1,0] = left_line_color
+
+    return output
 
 def main():
     # Find all the functions defined in this file whose names are
