@@ -10,14 +10,23 @@ import re
 ### result. Name them according to the task ID as in the three
 ### examples below. Delete the three examples. The tasks you choose
 ### must be in the data/training directory, not data/evaluation.
-def solve_6a1e5592(x):
-    return x
+# def solve_6a1e5592(x):
+#     return x
+#
+# def solve_b2862040(x):
+#     return x
 
-def solve_b2862040(x):
-    return x
-
-def solve_05269061(x):
-    return x
+def solve_9af7a82c(x):
+    unique_elem_list,no_of_times=np.unique(x, return_counts=True)
+    output=np.zeros([max(no_of_times), len(unique_elem_list)],dtype=int)
+    map_color_count = zip(unique_elem_list, no_of_times)
+    sorted_color_count = sorted(map_color_count, key=lambda y: y[1], reverse=True)
+    n=0
+    for i in sorted_color_count:
+        for m in range(i[1]):
+            output[m][n] = i[0]
+        n += 1
+    return output
 
 
 def main():
