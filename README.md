@@ -32,6 +32,7 @@ When looking at a task, a test-taker has access to inputs & outputs of the demon
 
 ## Task solved
 ### solve_5ad4f10b
+![test space](https://github.com/SaiPramodh128/ARC/blob/master/img/5ad4f10b.PNG)
 On analysis here the input contains two unique colour, one scattered all over the grid and other appears to be grid of square shape.
 The square shaped grid consists of random colour which appears to be in m x n but the output is in  3 x 3 grid. 
 The subgrid which is inside the main input grid is then transformed to  3 x 3, difference with swap of the unique colours found in input.
@@ -49,6 +50,7 @@ top left and bottom right occurance of the subgrid colour
 4. The subgrid values are swapped with scattered colour value in the output grid which is filled. With spliting the row in three parts.
 These three parts resembles the output grid and black(0) as the missing value 
 ### solve_1b60fb0c
+![test space](https://github.com/SaiPramodh128/ARC/blob/master/img/1b60fb0c.PNG)
 On analysis the input and output are going to the same.
 The background of the input are mostly black (0) and has blue shapes of pattern and the missing pattern are in red.
 Patterns:
@@ -66,6 +68,7 @@ Transformations :
 when compared to the right column of the grid, the left column is displaced by one along the y axis.
 The pattern shape is iterated in a loop to fill the colour same as the symetrical side.
 ### solve_c8cbb738
+![test space](https://github.com/SaiPramodh128/ARC/blob/master/img/c8cbb738.PNG)
 On analysis the input may be of any size m x n.
 The output size depends on the input as of the biggest sub pattern in the input 
 Patterns:
@@ -76,6 +79,7 @@ Transformation:
 2. Now, start looking at the various colored cells and map them in the output grid in the same form (rectangle, diamond, square) 
 with the same color and size as the input grid.
 ### solve_3bd67248
+![test space](https://github.com/SaiPramodh128/ARC/blob/master/img/3bd67248.PNG)
 On analysis the input may be of size m x n and the output will also be same size
 Pattern:
 1.The input consist of a unique colour along with black. which is bordered along the left side of the grid.
@@ -86,6 +90,7 @@ Transformation:
 2. In the output grid last row consists of yellow
 3. And finally the input grids unique value along left side
 ### solve_9af7a82c
+![test space](https://github.com/SaiPramodh128/ARC/blob/master/img/9af7a82c.PNG)
 On analysis the input grid may be of any size.
 The size of the output grid depends on the occurence of the unique colors in the input grid.
 Pattern:
