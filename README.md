@@ -30,6 +30,69 @@ A "grid" is a rectangular matrix (list of lists) of integers between 0 and 9 (in
 
 When looking at a task, a test-taker has access to inputs & outputs of the demonstration pairs, plus the input(s) of the test pair(s). The goal is to construct the output grid(s) corresponding to the test input grid(s), using 3 trials for each test input. "Constructing the output grid" involves picking the height and width of the output grid, then filling each cell in the grid with a symbol (integer between 0 and 9, which are visualized as colors). Only *exact* solutions (all cells match the expected answer) can be said to be correct.
 
+## Task solved
+### solve_5ad4f10b
+On analysis here the input contains two unique colour, one scattered all over the grid and other appears to be grid of square shape.
+The square shaped grid consists of random colour which appears to be in m x n but the output is in  3 x 3 grid. 
+The subgrid which is inside the main input grid is then transformed to  3 x 3, difference with swap of the unique colours found in input.
+Pattern:
+1. The background colour of the input here appears to be black(0) which will the background of the output grid too.
+2. The scattered colour are found initial as I think scattered appears first in the input before the subgrid. There might be also be a 
+scenario where scatterd occurs less than the subgrid colour.
+3. The subgrid may be in any m x n which is always square matrix array. It appears to be a grid with unique colours filling the m x n  which is resembles a
+3 x 3 matric with missing same unique colours.
+Transformation:
+1. The scattered colour and the subgrid colour are found which are later going to be swapped.
+2.The boundary of the subgrid is found by the first occurence of the subgrid color in the input by gramming the index as 
+top left and bottom right occurance of the subgrid colour
+3. Then framing the output grid with the stepsize of 3 since the output grid is a 3 x 3 grid.
+4. The subgrid values are swapped with scattered colour value in the output grid which is filled. With spliting the row in three parts.
+These three parts resembles the output grid and black(0) as the missing value 
+### solve_1b60fb0c
+On analysis the input and output are going to the same.
+The background of the input are mostly black (0) and has blue shapes of pattern and the missing pattern are in red.
+Patterns:
+1. If we consider in a symetrical view of lets say top and bottom halves both are symetrical to each other 
+similarly the left and right should also be symetrical.
+2. For this input if we consider the top and bottom parts if they are adjusted, the left and right will also
+follow the same funcionality since they are symetrical.
+
+On Comparing the first and last rows, as well as the first + 1 and last - 1 rows
+On Comparing the first and last columns, as well as the first + 1 and last - 1 columns
+
+Transformations :
+1. The goal is to fill the empty blue cells in the output grid with red to satisfy the pattern criteria.
+2. If the bottom row of the grid is displaced by one along the x axis as compared to the top row,
+when compared to the right column of the grid, the left column is displaced by one along the y axis.
+The pattern shape is iterated in a loop to fill the colour same as the symetrical side.
+### solve_c8cbb738
+On analysis the input may be of any size m x n.
+The output size depends on the input as of the biggest sub pattern in the input 
+Patterns:
+1. Two or more distinct colors, with one color notably found in the input grid cells 
+2. By connecting the same coloured cells, you can make shapes like squares, rectangles, and diamonds. 
+Transformation:
+1. Calculate the size of the largest square-shaped colored cells and create an output grid with that size and dominant color as the background colour.
+2. Now, start looking at the various colored cells and map them in the output grid in the same form (rectangle, diamond, square) 
+with the same color and size as the input grid.
+### solve_3bd67248
+On analysis the input may be of size m x n and the output will also be same size
+Pattern:
+1.The input consist of a unique colour along with black. which is bordered along the left side of the grid.
+2.The output should consists of a diagonal of red colour
+3. And a third colour of yellow bordered at the bottom of the grid.
+Transformation:
+1.The output grid is filled with red(2) using np.flipud which is other diagonal of the grid 
+2. In the output grid last row consists of yellow
+3. And finally the input grids unique value along left side
+### solve_9af7a82c
+On analysis the input grid may be of any size.
+The size of the output grid depends on the occurence of the unique colors in the input grid.
+Pattern:
+1.Output grid consists of occurence of unique colour in the descending order.
+2.The values are arranged from top to bottom in the descending order of colour
+Transformation:
+The maximum occurence of a colour is number of rows in the output grid, and number of unique colors other than black is the number of columns in the output grid
 
 ## Usage of the testing interface
 
